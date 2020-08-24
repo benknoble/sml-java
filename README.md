@@ -5,4 +5,5 @@
 An SML parser built in java using ANTLR 4.
 
 An [SML Grammar](https://people.mpi-sws.org/~rossberg/sml.html) is reproduced in
-[doc/smlgrammar.html][]
+[doc/smlgrammar.html][] (with a minor correction: type variables cannot be
+empty).
