@@ -15,11 +15,11 @@ BUILD = build
 all:
 
 $(LIB)/$(ANTLR):
-	if ! test -d "$$(dirname "$@")"; then mkdir "$$(dirname "$@")"; fi
-	$(DOWNLOAD) $(DOWNLOADFLAGS) $(ANTLR_URL) > "$@"
+	if ! test -d "$$(dirname '$@')"; then mkdir "$$(dirname '$@')"; fi
+	$(DOWNLOAD) $(DOWNLOADFLAGS) '$(ANTLR_URL)' > '$@'
 
 clean:
-	-$(RM) -r "$(BUILD)"
+	-$(RM) -r '$(BUILD)'
 
 distclean: clean
 	-git clean -fxd
