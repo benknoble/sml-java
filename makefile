@@ -6,7 +6,7 @@ DOWNLOAD = curl
 
 LIB = lib
 
-ANTLR_VERSION = 4.8-complete
+ANTLR_VERSION = 4.5.1-complete
 ANTLR = antlr-$(ANTLR_VERSION).jar
 ANTLR_URL = https://www.antlr.org/download/$(ANTLR)
 
