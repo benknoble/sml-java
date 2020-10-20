@@ -11,15 +11,22 @@ ANTLR = antlr-$(ANTLR_VERSION).jar
 ANTLR_URL = https://www.antlr.org/download/$(ANTLR)
 
 BUILD = build
+BIN = bin
 
-all:
+all: $(BIN)/SMLParser.class
 
 $(LIB)/$(ANTLR):
 	if ! test -d "$$(dirname '$@')"; then mkdir "$$(dirname '$@')"; fi
 	$(DOWNLOAD) $(DOWNLOADFLAGS) '$(ANTLR_URL)' > '$@'
 
+$(BUILD)/SMLParser.java: SML.g4
+	scripts/antlr4 -o '$(BUILD)' SML.g4
+
+$(BIN)/SMLParser.class: $(BUILD)/SMLParser.java
+	javac -d bin -classpath '$(LIB)/*:$(BUILD):$(CLASSPATH)' '$(BUILD)'/*.java
+
 clean:
-	-$(RM) -r '$(BUILD)'
+	-$(RM) -r '$(BUILD)' '$(BIN)'
 
 distclean: clean
 	-git clean -fxd
