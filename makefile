@@ -19,8 +19,8 @@ $(LIB)/$(ANTLR):
 	if ! test -d "$$(dirname '$@')"; then mkdir "$$(dirname '$@')"; fi
 	$(DOWNLOAD) $(DOWNLOADFLAGS) '$(ANTLR_URL)' > '$@'
 
-$(BUILD)/SMLParser.java: SML.g4
-	scripts/antlr4 -o '$(BUILD)' SML.g4
+$(BUILD)/SMLParser.java: SMLParser.g4 SMLLexer.g4
+	scripts/antlr4 -o '$(BUILD)' SMLLexer.g4 SMLParser.g4
 
 $(BIN)/SMLParser.class: $(BUILD)/SMLParser.java
 	javac -d bin -classpath '$(LIB)/*:$(BUILD):$(CLASSPATH)' '$(BUILD)'/*.java
